@@ -12,11 +12,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        getImages()
     }
 
     @IBAction func randomClicked(_ sender: Any) {
+       getImages()
     }
-    
+    func getImages()
+    {
+        let urlImage = "https://source.unsplash.com/600x600"
+        let url=URL(string: urlImage)!
+        guard let data = try? Data(contentsOf: url)
+                else
+        {
+            return
+        }
+        imageView.image = UIImage(data: data)
+    }
 }
 
